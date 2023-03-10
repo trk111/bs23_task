@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('task1', 'TaskController@task1')->name('task1');
+Route::get('task2', 'TaskController@task2')->name('task2');
