@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\CatetoryRelations;
 use Illuminate\Support\Facades\DB;
 
 
@@ -24,6 +25,8 @@ class TaskController extends Controller
 
     public function task2()
     {
-        echo "pending";
+        $categories = Category::orderBy('Name')->get();
+
+        return view('tasks/task2',compact( 'categories'));
     }
 }

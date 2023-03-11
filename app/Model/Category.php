@@ -21,4 +21,8 @@ class Category extends Model
         'Priority',
         'Disabled',
     ];
+
+    public function childs(){
+        return $this->hasMany(CatetoryRelations::class,'ParentcategoryId','Id')->with('category');
+    }
 }
