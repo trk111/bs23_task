@@ -14,10 +14,9 @@
     @foreach($childs as $child)
         <li>
             {{$child->Name}}
-
-            @if($child->childs)
-                @include('includes/manageChild',['childs' => $child->childs])
-            @endif
+                @if($child->childs)
+                    @include('includes/manageChild',['childs' => $child->childs])
+                @endif
         </li>
     @endforeach
 </ul>
