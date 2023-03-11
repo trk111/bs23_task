@@ -11,9 +11,9 @@
     <h2>Task 2</h2>
     <p>Uncountable child in each parent category and a child might be a
         parent of another category: Category List</p>
-    <ul>
+    <ul class="tree">
         <?php foreach ($categories as $category) { ?>
-            <li>
+            <li class="tree">
                 <?=$category->Name;?>
                     @if(!$category->childs->isEmpty())
                         @include('includes/manageChild',['childs' => $category->childs])
@@ -22,6 +22,7 @@
 
         <?php } ?>
     </ul>
+
 </div>
 
 @include('includes/footer')

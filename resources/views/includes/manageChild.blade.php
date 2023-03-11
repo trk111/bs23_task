@@ -11,12 +11,15 @@
 ?>
 
 <ul>
-    @foreach($childs as $child)
-        <li>
-            {{$child->Name}}
-                @if($child->childs)
-                    @include('includes/manageChild',['childs' => $child->childs])
-                @endif
-        </li>
-    @endforeach
+    <details open>
+        <summary></summary>
+            @foreach($childs as $child)
+                <li>
+                    {{$child->Name}}
+                        @if($child->childs)
+                            @include('includes/manageChild',['childs' => $child->childs])
+                        @endif
+                </li>
+            @endforeach
+    </details>
 </ul>
