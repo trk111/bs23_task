@@ -84,10 +84,8 @@
                     BS-23: PHP Project Task
                 </div>
 
-                <div class="links">
-                    <a href="{{ url('/task1') }}">Task 1</a>
-                    <a href="{{ url('/task2') }}">Task 2</a>
-                </div>
+                @include('includes/menu')
+
             </div>
         </div>
     </body>
