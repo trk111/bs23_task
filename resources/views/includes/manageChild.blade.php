@@ -1,7 +1,7 @@
 <?php
     $ChildCategories = array();
         //this loop is expensive-increasing time and space both complexity
-        //To DO can be managed by other way
+        //To DO - this can be managed other way
         foreach($childs as $child)
         {
             array_push($ChildCategories,$child->categoryId);
@@ -16,6 +16,13 @@
             @foreach($childs as $child)
                 <li>
                     {{$child->Name}}
+
+                    <?php
+                        //Item count Category wise - To DO - I dont its a standard solution
+                        $cats = array($child->Id);
+                        $categories = \App\Http\Controllers\TaskController::get_category_child($cats);
+                        echo ' ( '.\App\Model\ItemCategoryRelations::categoryItemCount($categories).' )';
+                    ?>
                         @if($child->childs)
                             @include('includes/manageChild',['childs' => $child->childs])
                         @endif

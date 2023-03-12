@@ -15,6 +15,11 @@
         <?php foreach ($categories as $category) { ?>
             <li class="tree">
                 <?=$category->Name;?>
+                <?php
+                    $cats = array($category->Id);
+                    $categories = \App\Http\Controllers\TaskController::get_category_child($cats);
+                    echo ' ( '.\App\Model\ItemCategoryRelations::categoryItemCount($categories).' )';
+                ?>
                     @if(!$category->childs->isEmpty())
                         @include('includes/manageChild',['childs' => $category->childs])
                     @endif

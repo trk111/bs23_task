@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\CatetoryRelations;
+use App\Model\ItemCategoryRelations;
+use Illuminate\Support\Facades\DB;
 
 
 class TaskController extends Controller
@@ -21,4 +24,20 @@ class TaskController extends Controller
 
         return view('tasks/task2',compact( 'categories'));
     }
+
+    public static function get_category_child($ids){
+
+        $categs =  CatetoryRelations::whereIn('ParentcategoryId',$ids)->orderBy('categoryId')->pluck('categoryId')->toArray();
+
+        if (!empty($categs))
+        {
+            $ids =array_merge($ids,$categs);
+
+            return self::get_category_child($ids);
+        }
+
+        return array_unique($ids);
+    }
+
+
 }
