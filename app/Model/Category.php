@@ -29,7 +29,7 @@ class Category extends Model
 
     public static function category_wise_count()
     {
-        $result = Category::select('category.Name as category_name', DB::raw('count(Item.Id) as total_items'))
+        $result = Category::select('category.Name as category_name', DB::raw('count(Item_category_relations.ItemNumber) as total_items'))
             ->leftJoin('Item_category_relations', 'category.Id', '=', 'item_category_relations.categoryId')
             ->leftJoin('Item', 'Item_category_relations.ItemNumber', '=', 'Item.Number')
             ->groupBy('category.Id','category_name')
